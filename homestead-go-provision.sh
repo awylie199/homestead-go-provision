@@ -46,7 +46,7 @@ if (( $? != 0 )) || [[ ! -f $GO_FILE ]]; then
 fi
 
 printf "Unzipping Go to %s\n" ${GO_BIN_FOLDER}
-sudo tar -C /usr/local -xzf "$GO_FILE"
+tar -C /usr/local -xzf "$GO_FILE"
 
 PATH=$PATH:$(pwd)/${GO_BIN_FOLDER}
 export PATH
