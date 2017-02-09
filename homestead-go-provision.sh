@@ -55,5 +55,5 @@ export PATH
 
 echo "export PATH=\$PATH:${GO_BIN_FOLDER}go/bin" >> ~/.profile
 echo "export GOPATH=${GO_FOLDER}" >> ~/.profile
-
+source "$HOME/.profile"
 printf "Go successfully provisioned on Homestead"
