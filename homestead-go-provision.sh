@@ -12,7 +12,7 @@ NORMAL () {
 GO_FOLDER="$HOME/go"
 GO_BIN_FOLDER="/usr/local/"
 CHECKSUM_SHA256=${1-""}
-GO_VERSION=${2:-'1.7.4'}
+GO_VERSION=${2:-'1.8'}
 GO_ARCH=${3:-'amd64'}
 GO_OS=${4:-'linux'}
 GO_FILE="go${GO_VERSION}.${GO_OS}-${GO_ARCH}.tar.gz"
@@ -47,9 +47,6 @@ fi
 
 printf "Unzipping Go to %s\n" ${GO_BIN_FOLDER}
 tar -C /usr/local -xzf "$GO_FILE"
-
-PATH=$PATH:$(pwd)/${GO_BIN_FOLDER}
-export PATH
 
 [[ ! -d "$HOME/go" ]] && mkdir -p "$HOME/go/bin"
 
