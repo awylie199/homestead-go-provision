@@ -48,9 +48,9 @@ fi
 printf "Unzipping Go to %s\n" ${GO_BIN_FOLDER}
 tar -C /usr/local -xzf "$GO_FILE"
 
-[[ ! -d "$HOME/go" ]] && mkdir -p "$HOME/go/bin"
+[[ ! -d "/home/$(whoami)/go" ]] && mkdir -p "/home/$(whoami)/go/bin"
 
-echo "export PATH=\$PATH:${GO_BIN_FOLDER}go/bin" >> ~/.profile
-echo "export GOPATH=${GO_FOLDER}" >> ~/.profile
-source "$HOME/.profile"
+echo "PATH=\$PATH:${GO_BIN_FOLDER}go/bin" >> "/home/$(whoami)/.profile"
+echo "GOPATH=${GO_FOLDER}" >> "/home/$(whoami)/.profile"
+source "/home/$(whoami)/.profile"
 printf "Go successfully provisioned on Homestead"
