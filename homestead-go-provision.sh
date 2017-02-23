@@ -11,10 +11,11 @@ NORMAL () {
 
 GO_FOLDER="$HOME/go"
 GO_BIN_FOLDER="/usr/local/"
-CHECKSUM_SHA256=${1-""}
-GO_VERSION=${2:-'1.8'}
-GO_ARCH=${3:-'amd64'}
-GO_OS=${4:-'linux'}
+PROVISIONER=${1:-"vagrant"}
+CHECKSUM_SHA256=${2:-""}
+GO_VERSION=${3:-'1.8'}
+GO_ARCH=${4:-'amd64'}
+GO_OS=${5:-'linux'}
 GO_FILE="go${GO_VERSION}.${GO_OS}-${GO_ARCH}.tar.gz"
 GO_FILE_URL="https://storage.googleapis.com/golang/${GO_FILE}"
 FILE_SHA256=""
@@ -48,11 +49,12 @@ fi
 printf "Unzipping Go to %s\n" ${GO_BIN_FOLDER}
 tar -C /usr/local -xzf "$GO_FILE"
 
-[[ ! -d "/home/vagrant/go" ]] && mkdir -p "/home/vagrant/go/bin"
+[[ ! -d "/home/vagrant/go" ]] && mkdir -p "/home/$PROVISIONER/go/bin"
 
-echo "PATH=\$PATH:${GO_BIN_FOLDER}go/bin" >> "/home/vagrant/.profile"
-echo "GOPATH=${GO_FOLDER}" >> "/home/vagrant/.profile"
-echo "PATH=\$PATH:\$HOME/go/bin"
-source "/home/vagrant/.profile"
-chown -R vagrant:vagrant $GO_FOLDER 
+echo "PATH=\$PATH:${GO_BIN_FOLDER}go/bin" >> "/home/$PROVISIONER/.profile"
+echo "GOPATH=${GO_FOLDER}" >> "/home/$PROVISIONER/.profile"
+echo "PATH=\$PATH:/home/$PROVISIONER/go/bin"
+echo "export GOPATH" >> "/home/$PROVISIONER/.profile"
+source "/home/$PROVISIONER/.profile"
+chown -R $PROVISIONER:$PROVISIONER $GO_FOLDER
 printf "Go successfully provisioned on Homestead"
