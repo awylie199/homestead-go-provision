@@ -54,4 +54,5 @@ echo "PATH=\$PATH:${GO_BIN_FOLDER}go/bin" >> "/home/vagrant/.profile"
 echo "GOPATH=${GO_FOLDER}" >> "/home/vagrant/.profile"
 echo "PATH=\$PATH:\$HOME/go/bin"
 source "/home/vagrant/.profile"
+chown -R vagrant:vagrant $GO_FOLDER 
 printf "Go successfully provisioned on Homestead"
