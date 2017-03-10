@@ -9,9 +9,9 @@ NORMAL () {
     tput sgr0
 }
 
-GO_FOLDER="$HOME/go"
 GO_BIN_FOLDER="/usr/local/"
 PROVISIONER=${1:-"vagrant"}
+GO_FOLDER="/home/${PROVISIONER}/go"
 CHECKSUM_SHA256=${2:-""}
 GO_VERSION=${3:-'1.8'}
 GO_ARCH=${4:-'amd64'}
