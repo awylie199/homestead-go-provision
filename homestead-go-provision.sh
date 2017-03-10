@@ -53,7 +53,7 @@ tar -C /usr/local -xzf "$GO_FILE"
 
 echo "PATH=\$PATH:${GO_BIN_FOLDER}go/bin" >> "/home/$PROVISIONER/.profile"
 echo "GOPATH=${GO_FOLDER}" >> "/home/$PROVISIONER/.profile"
-echo "PATH=\$PATH:/home/$PROVISIONER/go/bin"
+echo "PATH=\$PATH:/home/$PROVISIONER/go/bin >> "/home/${PROVISIONER}/.profile"
 echo "export GOPATH" >> "/home/$PROVISIONER/.profile"
 source "/home/$PROVISIONER/.profile"
 chown -R $PROVISIONER:$PROVISIONER $GO_FOLDER
